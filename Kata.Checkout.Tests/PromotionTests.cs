@@ -27,13 +27,13 @@ namespace Kata.Checkout.Tests
         }
 
         [Test]
-        public void Apply_1A1A2_Buy1Get1Free_NoDiscount1AdditionalSKU()
+        public void Apply_1B1B2_Buy1Get1Free_NoDiscount1AdditionalSKU()
         {
-            IPromotion promo = new BuyXGetYFree("A", "A", 1, 1, 2);
+            IPromotion promo = new BuyXGetYFree("B", "B", 1, 1, 2);
             PromotionResult result = promo.ApplyPromotion(_saleProducts);
             Assert.IsTrue(result.Applied);
-            Assert.That(result.AppliedSKUs, Is.EquivalentTo(new[] { "A" }));
-            Assert.That(result.AdditionalSKUs, Is.EquivalentTo(new[] { "A", "A" }));
+            Assert.That(result.AppliedSKUs, Is.EquivalentTo(new[] { "B" }));
+            Assert.That(result.AdditionalSKUs, Is.EquivalentTo(new[] { "B", "B" }));
         }
 
         [Test]

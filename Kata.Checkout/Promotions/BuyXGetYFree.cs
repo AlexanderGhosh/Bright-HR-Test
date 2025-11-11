@@ -13,12 +13,14 @@
             SaleProduct? product = products.FirstOrDefault(p => p.Product.SKU == _requiredSKU);
             if (product is null) return PromotionResult.Empty;
 
-            PromotionResult res = new();
             int toApply = product.Quantity / _buyX;
             toApply = Math.Min(toApply, _maxRedemptions);
 
-            res.AdditionalSKUs.AddRange(Enumerable.Repeat(_freeSKU, toApply * _getY));
-            return res;
+            return new PromotionResult()
+            {
+                AppliedSKUs = [_requiredSKU],
+                AdditionalSKUs = [.. Enumerable.Repeat(_freeSKU, toApply * _getY)]
+            };
         }
     }
 
