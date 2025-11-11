@@ -1,6 +1,6 @@
 namespace Kata.Checkout.Tests
 {
-    public class Tests
+    public class CheckoutTests
     {
         private ICheckout _checkout;
         [SetUp]
