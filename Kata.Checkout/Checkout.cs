@@ -7,6 +7,7 @@
         private readonly ICatalogue _catalogue = catalogue;
         public void Scan(string sku)
         {
+            _catalogue.GetPrice(sku); // to throw KeyNotFoundException if sku is invalid
             if (_scannedItems.TryGetValue(sku, out int value))
             {
                 _scannedItems[sku] = ++value;
