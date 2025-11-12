@@ -24,7 +24,7 @@
         /// <remarks>This does not modify <paramref name="products"/> and does not apply a discount</remarks>
         public PromotionResult ApplyPromotion(params SaleProduct[] products)
         {
-            SaleProduct? product = products.FirstOrDefault(p => p.Product.SKU == _requiredSKU);
+            SaleProduct? product = products.FirstOrDefault(p => p.SKU == _requiredSKU);
             if (product is null) return PromotionResult.Empty;
 
             int toApply = product.Quantity / _buyX;

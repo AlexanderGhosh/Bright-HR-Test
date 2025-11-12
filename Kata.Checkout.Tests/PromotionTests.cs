@@ -10,9 +10,9 @@ namespace Kata.Checkout.Tests
         public void Setup()
         {
             _saleProducts = [
-                new(new Product("A", 10), 1),
-                new(new Product("B", 15), 2),
-                new(new Product("C", 20), 3),
+                new("A", 10, 1),
+                new("B", 15, 2),
+                new("C", 20, 3),
             ];
         }
 

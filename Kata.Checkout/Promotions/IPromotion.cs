@@ -40,21 +40,27 @@ namespace Kata.Checkout.Promotions
     /// <summary>
     /// Associates an SKU with a quantity
     /// </summary>
+    /// <param name="sku">The SKU of the product (to be) sold</param>
     /// <param name="unitCost">The unit cost of the product (to be) sold</param>
     /// <param name="quantity">The amount of products (to be) sold</param>
-    public class SaleProduct(int unitCost, int quantity = 1)
+    public class SaleProduct(string sku, int unitCost, int quantity = 1)
     {
         /// <summary>
-        /// <inheritdoc cref="SaleProduct(int, int)" path="/param[@name='unitCost']"/>
+        /// <inheritdoc cref="SaleProduct(string, int, int)" path="/param[@name='sku']"/>
+        /// </summary>
+        public string SKU { get; } = sku;
+
+        /// <summary>
+        /// <inheritdoc cref="SaleProduct(string, int, int)" path="/param[@name='unitCost']"/>
         /// </summary>
         public int UnitCost { get; } = unitCost;
 
         /// <summary>
-        /// <inheritdoc cref="SaleProduct(int, int)" path="/param[@name='quantity']"/>
+        /// <inheritdoc cref="SaleProduct(string, int, int)" path="/param[@name='quantity']"/>
         /// </summary>
         public int Quantity { get; set; } = quantity;
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public (int, int) Deconstruct() => (UnitCost, Quantity);
+        public (string, int, int) Deconstruct() => (SKU, UnitCost, Quantity);
     }
 
     /// <summary>
