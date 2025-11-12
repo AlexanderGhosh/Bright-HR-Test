@@ -26,31 +26,14 @@ namespace Kata.Checkout.Tests
         }
 
         [Test]
-        public void GetPrice_A_Returns50()
+        [TestCase("A", 50)]
+        [TestCase("B", 30)]
+        [TestCase("C", 20)]
+        [TestCase("D", 15)]
+        public void GetPrice_x_ReturnsY(string x, int y)
         {
-            var price = _catalogue.GetPrice("A");
-            Assert.That(price, Is.EqualTo(50));
-        }
-
-        [Test]
-        public void GetPrice_B_Returns30()
-        {
-            var price = _catalogue.GetPrice("B");
-            Assert.That(price, Is.EqualTo(30));
-        }
-
-        [Test]
-        public void GetPrice_C_Returns20()
-        {
-            var price = _catalogue.GetPrice("C");
-            Assert.That(price, Is.EqualTo(20));
-        }
-
-        [Test]
-        public void GetPrice_D_Returns15()
-        {
-            var price = _catalogue.GetPrice("D");
-            Assert.That(price, Is.EqualTo(15));
+            var price = _catalogue.GetPrice(x);
+            Assert.That(price, Is.EqualTo(y));
         }
     }
 }
