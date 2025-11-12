@@ -25,6 +25,14 @@
         }
 
         [Test]
+        public void TotalPrice_Z_ThrowMissingKey_ReturnsZero()
+        {
+            Assert.That(() => _checkout.Scan("Z"), Throws.TypeOf<KeyNotFoundException>());
+            var totalPrice = _checkout.GetTotalPrice();
+            Assert.That(totalPrice, Is.EqualTo(0));
+        }
+
+        [Test]
         public void TotalPrice_A_Returns50()
         {
             _checkout.Scan("A");
@@ -49,6 +57,32 @@
             _checkout.Scan("A");
             var totalPrice = _checkout.GetTotalPrice();
             Assert.That(totalPrice, Is.EqualTo(150));
+        }
+
+        [Test]
+        public void TotalPrice_B_Returns30()
+        {
+            _checkout.Scan("B");
+            var totalPrice = _checkout.GetTotalPrice();
+            Assert.That(totalPrice, Is.EqualTo(30));
+        }
+
+        [Test]
+        public void TotalPrice_AB_Returns80()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("B");
+            var totalPrice = _checkout.GetTotalPrice();
+            Assert.That(totalPrice, Is.EqualTo(80));
+        }
+
+        [Test]
+        public void TotalPrice_BA_Returns80()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("B");
+            var totalPrice = _checkout.GetTotalPrice();
+            Assert.That(totalPrice, Is.EqualTo(80));
         }
     }
 }

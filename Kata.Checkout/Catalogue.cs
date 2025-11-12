@@ -5,7 +5,7 @@
         private readonly Dictionary<string, int> _priceList = priceList;
         public int GetPrice(string sku)
         {
-            return _priceList["A"];
+            return _priceList[sku];
         }
     }
 }
