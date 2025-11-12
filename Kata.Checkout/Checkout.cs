@@ -7,7 +7,14 @@
         private readonly ICatalogue _catalogue = catalogue;
         public void Scan(string sku)
         {
-            _scannedItems[sku]++;
+            if (_scannedItems.TryGetValue(sku, out int value))
+            {
+                _scannedItems[sku] = ++value;
+            }
+            else
+            {
+                _scannedItems.Add(sku, 1);
+            }
         }
         public int GetTotalPrice()
         {
