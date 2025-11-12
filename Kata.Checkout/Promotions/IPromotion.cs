@@ -1,4 +1,4 @@
-﻿namespace Kata.Checkout
+﻿namespace Kata.Checkout.Promotions
 {
     public interface IPromotion
     {
