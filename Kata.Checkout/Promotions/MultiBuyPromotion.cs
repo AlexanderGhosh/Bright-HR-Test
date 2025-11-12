@@ -7,7 +7,7 @@
         int IPromotion.ApplyPromotion(int unitPrice, int quantity)
         {
             int toApply = quantity / _requiredQuantity;
-            int notApplied = quantity - toApply;
+            int notApplied = quantity % _requiredQuantity;
             int multi = _multiPrice * toApply;
             int single = unitPrice * notApplied;
             return multi + single;
