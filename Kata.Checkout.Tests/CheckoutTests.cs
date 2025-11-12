@@ -1,4 +1,6 @@
-﻿namespace Kata.Checkout.Tests
+﻿using Kata.Checkout.Tests.Utils;
+
+namespace Kata.Checkout.Tests
 {
     [TestFixture]
     internal class CheckoutTests
@@ -7,13 +9,7 @@
         [SetUp]
         public void Setup()
         {
-            ICatalogue catalogue = new Catalogue(new()
-            {
-                { "A", 50 },
-                { "B", 30 },
-                { "C", 20 },
-                { "D", 15 }
-            });
+            ICatalogue catalogue = CatalogueHelper.Default;
             _checkout = new Checkout(catalogue);
         }
 
