@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="sku">The unique identifier for the desired product</param>
         /// <param name="quantity">The quantity of the product to get the price for</param>
-        /// <returns>The unit price for <paramref name="sku"/></returns>
+        /// <returns>The price for <paramref name="sku"/> when sold in <paramref name="quantity"/></returns>
         int GetPrice(string sku, int quantity);
     }
 }
