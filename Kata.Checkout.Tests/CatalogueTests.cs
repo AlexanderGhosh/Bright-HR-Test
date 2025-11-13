@@ -9,7 +9,7 @@ namespace Kata.Checkout.Tests
         [SetUp]
         public void Setup()
         {
-            _catalogue = CatalogueHelper.Default;
+            _catalogue = CatalogueHelper.DefaultNoPromotions;
         }
 
         [Test]

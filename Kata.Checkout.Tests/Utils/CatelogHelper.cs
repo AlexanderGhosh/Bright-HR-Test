@@ -1,4 +1,6 @@
-﻿namespace Kata.Checkout.Tests.Utils
+﻿using Kata.Checkout.Promotions;
+
+namespace Kata.Checkout.Tests.Utils
 {
     internal class CatalogueHelper
     {
@@ -11,12 +13,19 @@
         /// <item>D 15</item>
         /// </list>
         /// </summary>
+        public static ICatalogue DefaultNoPromotions => new Catalogue(new()
+        {
+            { "A", new(50) },
+            { "B", new(30) },
+            { "C", new(20) },
+            { "D", new(15) }
+        });
         public static ICatalogue Default => new Catalogue(new()
         {
-            { "A", 50 },
-            { "B", 30 },
-            { "C", 20 },
-            { "D", 15 }
+            { "A", new(50, new MultiBuyPromotion(3, 130)) },
+            { "B", new(30, new MultiBuyPromotion(2, 45)) },
+            { "C", new(20) },
+            { "D", new(15) }
         });
 
         /// <summary>
