@@ -15,25 +15,33 @@ namespace Kata.Checkout.Tests
         [Test]
         public void GetPrice_InvalidSKU_ThrowsMissingKey()
         {
-            Assert.Throws<KeyNotFoundException>(() => _catalogue.GetPrice("Z"));
+            Assert.Throws<KeyNotFoundException>(() => _catalogue.GetPrice("Z", 1));
         }
 
         [Test]
         public void GetPrice_Empty_ThrowsMissingKey()
         {
             _catalogue = CatalogueHelper.Empty;
-            Assert.Throws<KeyNotFoundException>(() => _catalogue.GetPrice("A"));
+            Assert.Throws<KeyNotFoundException>(() => _catalogue.GetPrice("A", 1));
         }
 
         [Test]
-        [TestCase("A", 50)]
-        [TestCase("B", 30)]
-        [TestCase("C", 20)]
-        [TestCase("D", 15)]
-        public void GetPrice_x_ReturnsY(string x, int y)
+        [TestCase("A", 0, 0)]
+        [TestCase("B", 0, 0)]
+        [TestCase("C", 0, 0)]
+        [TestCase("D", 0, 0)]
+        [TestCase("A", 1, 50)]
+        [TestCase("B", 1, 30)]
+        [TestCase("C", 1, 20)]
+        [TestCase("D", 1, 15)]
+        [TestCase("A", 2, 100)]
+        [TestCase("B", 2, 60)]
+        [TestCase("C", 2, 40)]
+        [TestCase("D", 2, 30)]
+        public void GetPrice_SKU_Quantity_ReturnsZ_NoPromotions(string sku, int quantity, int excpected)
         {
-            var price = _catalogue.GetPrice(x);
-            Assert.That(price, Is.EqualTo(y));
+            var price = _catalogue.GetPrice(sku, quantity);
+            Assert.That(price, Is.EqualTo(excpected));
         }
     }
 }

@@ -5,9 +5,9 @@
     public class Catalogue(Dictionary<string, int> priceList) : ICatalogue
     {
         private readonly Dictionary<string, int> _priceList = priceList;
-        int ICatalogue.GetPrice(string sku)
+        int ICatalogue.GetPrice(string sku, int quantity)
         {
-            return _priceList[sku];
+            return _priceList[sku] * quantity;
         }
     }
 }
