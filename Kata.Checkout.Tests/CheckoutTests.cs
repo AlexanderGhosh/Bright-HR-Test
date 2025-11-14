@@ -29,6 +29,7 @@ namespace Kata.Checkout.Tests
         [TestCase(30, "B")]
         [TestCase(45, "B", "B")]
         [TestCase(75, "B", "B","B")]
+        [TestCase(95, "B", "A", "B")]
         [TestCase(20, "C")]
         [TestCase(15, "D")]
         [TestCase(175, "A", "A", "A", "B", "B")]
