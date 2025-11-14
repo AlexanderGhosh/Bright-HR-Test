@@ -1,0 +1,20 @@
+This main branch is actually my seccond attempt the first is in the branch "FirstAttempt"
+The reason is in the first attempt i was trying to guess the libs use case hence the IProdcut (which i later removed) 
+also i think i was getting ahead of my self by trying to predict the future requirements instead of focusing on the current ones (i guessed that the next thing to add would be promotions which consider more than 1 SKU).
+
+This new attempt is decigned to meet the current requirements while being easy to extend in the future if needed (open close principle).
+
+I seperated the promotions from the catalogue (kinda making them optional) because i believe the products on promotion will be the minority and so by completly splitting them /
+the catalogue's implementation can choose how best to store and apply promotions (Seperation of conserns and single responsibility)
+this seperation also means i can test promotions in isolation instead of having to go via the catalogue or checkout.
+
+Interfaces instead of concrete classes (dependency inversion).
+
+I did consider making the sku a generic type or even having an ISKU but i decided that if thats needed the lib can be updated very easily
+
+Ive dual targeted because at the moment the lib is not tied to .NET 8 and i dont know if the lib consumer is gonna be writing in .net (core) or .net framework
+
+I used .NET 8 beasue its long term support and .NET 10 is not finished yet (same for C# 13 and not 14)
+(that being said i just checked an 10 was released on the 11th)
+
+I probably over did it with the tests but i feel i covered all the edge cases i could think of and by using [TestCase] its pretty easy to just keep on adding/removing
