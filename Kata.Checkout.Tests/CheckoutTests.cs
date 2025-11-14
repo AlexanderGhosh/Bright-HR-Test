@@ -9,15 +9,8 @@ namespace Kata.Checkout.Tests
         [SetUp]
         public void Setup()
         {
-            ICatalogue catalogue = CatalogueHelper.DefaultNoPromotions;
+            ICatalogue catalogue = CatalogueHelper.Default;
             _checkout = new Checkout(catalogue);
-        }
-
-        [Test]
-        public void TotalPrice_NoItems_ReturnsZero()
-        {
-            var totalPrice = _checkout.GetTotalPrice();
-            Assert.That(totalPrice, Is.EqualTo(0));
         }
 
         [Test]
@@ -29,56 +22,27 @@ namespace Kata.Checkout.Tests
         }
 
         [Test]
-        public void TotalPrice_A_Returns50()
+        [TestCase(0)]
+        [TestCase(50, "A")]
+        [TestCase(100, "A", "A")]
+        [TestCase(130, "A", "A", "A")]
+        [TestCase(30, "B")]
+        [TestCase(45, "B", "B")]
+        [TestCase(75, "B", "B","B")]
+        [TestCase(20, "C")]
+        [TestCase(15, "D")]
+        [TestCase(175, "A", "A", "A", "B", "B")]
+        [TestCase(175, "A", "B", "A", "B", "A")]
+        [TestCase(205, "A", "A", "A", "B", "B", "B")]
+        [TestCase(260, "A", "A", "A", "B", "B", "B", "C", "C", "D")]
+        public void TotalPrice_SKUS_ReturnsY(int price, params string[] skus)
         {
-            _checkout.Scan("A");
+            foreach(var sku in skus)
+            {
+                _checkout.Scan(sku);
+            }
             var totalPrice = _checkout.GetTotalPrice();
-            Assert.That(totalPrice, Is.EqualTo(50));
-        }
-
-        [Test]
-        public void TotalPrice_AA_Returns100()
-        {
-            _checkout.Scan("A");
-            _checkout.Scan("A");
-            var totalPrice = _checkout.GetTotalPrice();
-            Assert.That(totalPrice, Is.EqualTo(100));
-        }
-
-        [Test]
-        public void TotalPrice_AAA_Returns150()
-        {
-            _checkout.Scan("A");
-            _checkout.Scan("A");
-            _checkout.Scan("A");
-            var totalPrice = _checkout.GetTotalPrice();
-            Assert.That(totalPrice, Is.EqualTo(150));
-        }
-
-        [Test]
-        public void TotalPrice_B_Returns30()
-        {
-            _checkout.Scan("B");
-            var totalPrice = _checkout.GetTotalPrice();
-            Assert.That(totalPrice, Is.EqualTo(30));
-        }
-
-        [Test]
-        public void TotalPrice_AB_Returns80()
-        {
-            _checkout.Scan("A");
-            _checkout.Scan("B");
-            var totalPrice = _checkout.GetTotalPrice();
-            Assert.That(totalPrice, Is.EqualTo(80));
-        }
-
-        [Test]
-        public void TotalPrice_BA_Returns80()
-        {
-            _checkout.Scan("A");
-            _checkout.Scan("B");
-            var totalPrice = _checkout.GetTotalPrice();
-            Assert.That(totalPrice, Is.EqualTo(80));
+            Assert.That(totalPrice, Is.EqualTo(price));
         }
     }
 }
