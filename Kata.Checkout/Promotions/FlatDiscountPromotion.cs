@@ -15,6 +15,7 @@ namespace Kata.Checkout.Promotions
         private readonly int _unitDiscount = unitDiscount;
         int IPromotion.ApplyPromotion(int unitPrice, int quantity)
         {
+            if (quantity < 0) throw new ArgumentException("Quantity cannot be negative", nameof(quantity));
             return (unitPrice - _unitDiscount) * quantity;
         }
     }
