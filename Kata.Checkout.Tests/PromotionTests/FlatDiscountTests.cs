@@ -24,7 +24,6 @@ namespace Kata.Checkout.Tests.PromotionTests
         [TestCase(1, 0, 1, ExpectedResult = 0)]
         [TestCase(10, 1, 5, ExpectedResult = 5)]
         [TestCase(10, 2, 5, ExpectedResult = 10)]
-        [TestCase(10, 2, 5, ExpectedResult = 10)]
         [TestCase(-10, 1, 5, ExpectedResult = -15)]
         [TestCase(10, 1, -5, ExpectedResult = 15)]
         public int Apply_UnitPriceX_QuantityY_DiscountZ_ReturnsW(int unitCost, int quantity, int discount)

@@ -30,7 +30,7 @@ namespace Kata.Checkout.Tests
         [TestCase("D", 0, 0)]
         [TestCase("D", 1, 15)]
         [TestCase("D", 2, 30)]
-        public void GetPrice_SKU_Quantity_ReturnsZ_NoPromotions(string sku, int quantity, int excpected)
+        public void GetPrice_NoPromotions_TestCases(string sku, int quantity, int excpected)
         {
             var price = CatalogueHelper.DefaultNoPromotions.GetPrice(sku, quantity);
             Assert.That(price, Is.EqualTo(excpected));
@@ -49,7 +49,7 @@ namespace Kata.Checkout.Tests
         [TestCase("B", 4, 90)]
         [TestCase("C", 1, 20)]
         [TestCase("D", 1, 15)]
-        public void GetPrice_SKU_Quantity_ReturnsZ(string sku, int quantity, int excpected)
+        public void GetPrice_WithPromotions_TestCases(string sku, int quantity, int excpected)
         {
             var price = CatalogueHelper.Default.GetPrice(sku, quantity);
             Assert.That(price, Is.EqualTo(excpected));

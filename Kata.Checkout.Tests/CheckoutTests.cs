@@ -35,7 +35,7 @@ namespace Kata.Checkout.Tests
         [TestCase(175, "A", "B", "A", "B", "A")]
         [TestCase(205, "A", "A", "A", "B", "B", "B")]
         [TestCase(260, "A", "A", "A", "B", "B", "B", "C", "C", "D")]
-        public void TotalPrice_SKUS_ReturnsY(int price, params string[] skus)
+        public void TotalPrice_TestCases(int price, params string[] skus)
         {
             foreach(var sku in skus)
             {
