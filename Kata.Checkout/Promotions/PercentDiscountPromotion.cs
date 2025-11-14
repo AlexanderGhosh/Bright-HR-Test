@@ -9,6 +9,7 @@
         private readonly float _discountMultiplier = discountMultiplier;
         /// <inheritdoc/>
         /// <remarks>Floors the result of the multiplier</remarks>
+        /// <exception cref="ArgumentException">Thrown when <paramref name="quantity"/> is negative</exception>
         int IPromotion.ApplyPromotion(int unitPrice, int quantity)
         {
             if (quantity < 0) throw new ArgumentException("Quantity cannot be negative", nameof(quantity));

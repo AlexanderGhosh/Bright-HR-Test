@@ -13,6 +13,8 @@ namespace Kata.Checkout.Promotions
     public class FlatDiscountPromotion(int unitDiscount) : IPromotion
     {
         private readonly int _unitDiscount = unitDiscount;
+        /// <inheritdoc/>
+        /// <exception cref="ArgumentException">Thrown when <paramref name="quantity"/> is negative</exception>
         int IPromotion.ApplyPromotion(int unitPrice, int quantity)
         {
             if (quantity < 0) throw new ArgumentException("Quantity cannot be negative", nameof(quantity));
