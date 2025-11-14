@@ -4,22 +4,22 @@
 Targets .NET 8 and .NET Standard 2.0 <br>
 Language version 13
 
-This is an implementation of http://codekata.com/kata/kata09-back-to-the-checkout/ for the Bright HR Technical Test
+This is an implementation of https://github.com/brighthr/checkout-kata for the Bright HR Technical Test
 It is a class library which provides interfaces and implementations for a point of sale checkout system. with support for a dynamic product catalogue and special offers.
 
 ### Usage
-```shell
+```bash
 git clone https://github.com/AlexanderGhosh/Bright-HR-Test.git --branch main
 cd Bright-HR-Test/Kata.Checkout 
 dotnet build
 ```
 You can then reference the built DLL in your own project.
 You can Pack the project and use it in nuget
-```shell
+```bash
 dotnet pack -c Release
 ```
 Or run the unit tests to see it in action
-```shell
+```bash
 cd ..
 dotnet test
 ```
